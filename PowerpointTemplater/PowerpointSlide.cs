@@ -104,6 +104,13 @@
                     tables.Add(new PowerpointTable(this, tblId, title));
                     tblId++;
                 }
+                else
+                if (cNvPr.Description != null)
+                {
+                    string description = cNvPr.Description.Value;
+                    tables.Add(new PowerpointTable(this, tblId, description));
+                    tblId++;
+                }
             }
 
             return tables;
@@ -204,6 +211,18 @@
             foreach (Picture pic in this.slidePart.Slide.Descendants<Picture>())
             {
                 var cNvPr = pic.NonVisualPictureProperties.NonVisualDrawingProperties;
+                if (cNvPr.Description != null)
+                {
+                    string description = cNvPr.Description.Value;
+                    if (description.Contains(tag))
+                    {
+                        // Gets the relationship ID of the part
+                        string rId = this.slidePart.GetIdOfPart(imagePart);
+
+                        pic.BlipFill.Blip.Embed.Value = rId;
+                    }
+                }
+                else
                 if (cNvPr.Title != null)
                 {
                     string title = cNvPr.Title.Value;
