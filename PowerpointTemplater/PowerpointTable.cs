@@ -142,6 +142,10 @@
             internal string Tag { get; private set; }
 
             internal string NewText { get; private set; }
+            public bool Bold { get; private set; }
+            public bool Underline { get; private set; }
+            public bool Italic { get; private set; }
+            public bool Strikethrough { get; private set; }
 
             public class BackgroundPicture
             {
@@ -155,10 +159,14 @@
 
             internal BackgroundPicture Picture { get; private set; }
 
-            public Cell(string tag, string newText)
+            public Cell(string tag, string newText, bool bold = false, bool underline = false, bool italic = false, bool strikethrough = false)
             {
                 this.Tag = tag;
                 this.NewText = newText;
+                this.Bold = bold;
+                this.Underline = underline;
+                this.Italic = italic;
+                this.Strikethrough = strikethrough;
             }
 
             public Cell(string tag, string newText, BackgroundPicture backgroundPicture)
@@ -317,6 +325,20 @@
                     {
                         A.TableCellProperties tcPr = tc.GetFirstChild<A.TableCellProperties>();
                         SetTableCellPropertiesWithBackgroundPicture(slide, tcPr, cell.Picture);
+                    }
+                    foreach( var r in p.ChildElements.OfType<A.Run>()){
+                        if(r.ChildElements.OfType<A.RunProperties>().Count() == 0)
+                        {
+                            r.AppendChild<A.RunProperties>(new A.RunProperties());
+                        }
+                        p.RemoveAllChildren<A.DefaultRunProperties>();
+                        foreach(var rPr in r.ChildElements.OfType<A.RunProperties>())
+                        {
+                            rPr.Bold = cell.Bold;
+                            rPr.Italic = cell.Italic;
+                            rPr.Strike = cell.Strikethrough? A.TextStrikeValues.SingleStrike : A.TextStrikeValues.NoStrike;
+                            
+                        }
                     }
                 }
             }
