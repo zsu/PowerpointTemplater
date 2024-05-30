@@ -14,9 +14,6 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
-# Windows shortcuts
-*.lnk
-
 # =========================
 # Operating System Files
 # =========================
@@ -28,24 +25,31 @@ $RECYCLE.BIN/
 .AppleDouble
 .LSOverride
 
+# Icon must ends with two \r.
+Icon
+
+
 # Thumbnails
 ._*
 
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
+# Files that might appear on external disk
 .Spotlight-V100
-.TemporaryItems
 .Trashes
-.VolumeIcon.icns
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
+#NuGet
+packages
+!packages/repositories.config
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Pp]ublishProfiles/
+[Bb]uild/
+[Ll]ogs/
+.nuget/
 .vs/
-/PowerpointTemplater/bin
-/PowerpointTemplater.Tests/bin
-/PowerpointTemplater.Tests/obj
+*.suo
+*.user
+*.vspscc
+*.log
+.vs/config/applicationhost.config
+/.vs/WebFrameworkCore/v15/Server/sqlite3
