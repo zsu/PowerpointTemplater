@@ -8,6 +8,7 @@
     <Description>.NET Core library for reading, manipulating and writing powerpoint files using templates.</Description>
     <Copyright>Copyright © 2020 Zhicheng Su</Copyright>
     <PackageTags>Powerpoint;pptx;template</PackageTags>
+    <Version>2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
