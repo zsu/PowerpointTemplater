@@ -360,12 +360,10 @@
             var ph = sp.NonVisualShapeProperties.ApplicationNonVisualDrawingProperties.GetFirstChild<PlaceholderShape>();
             if (ph != null && ph.Type != null && ph.Type.HasValue)
             {
-                switch ((PlaceholderValues)ph.Type)
+                var placeholderType = ph.Type.Value;
+                if (placeholderType.Equals(PlaceholderValues.Title) || placeholderType.Equals(PlaceholderValues.CenteredTitle))
                 {
-                    case PlaceholderValues.Title:
-                    case PlaceholderValues.CenteredTitle:
-                        isTitle = true;
-                        break;
+                    isTitle = true;
                 }
             }
 
@@ -380,7 +378,7 @@
         /// <returns>The image part</returns>
         internal ImagePart AddPicture(byte[] picture, string contentType)
         {
-            ImagePartType type = 0;
+            PartTypeInfo type = ImagePartType.Png;
             switch (contentType)
             {
                 case "image/bmp":

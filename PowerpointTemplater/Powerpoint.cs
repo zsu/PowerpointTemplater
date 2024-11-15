@@ -93,7 +93,7 @@
         /// </remarks>
         public void Close()
         {
-            this.presentationDocument.Close();
+            this.presentationDocument.Dispose();
         }
 
         /// <summary>
