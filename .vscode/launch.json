@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Launch PowerpointTemplater.Tests",
+        "type": "coreclr",
+        "request": "launch",
+        "preLaunchTask": "build",
+        "program": "${workspaceFolder}/PowerpointTemplater.Tests/bin/Debug/net9.0/PowerpointTemplater.Tests.dll",
+        "args": [],
+        "cwd": "${workspaceFolder}/PowerpointTemplater.Tests",
+        "stopAtEntry": false,
+        "console": "internalConsole"
+      }
+    ]
+  }
+  
